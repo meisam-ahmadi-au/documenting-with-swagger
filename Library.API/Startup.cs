@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Library.API.Contexts;
+using Library.API.OperationFilters;
 using Library.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -94,6 +95,10 @@ namespace Library.API
                         Version = "1",
                         Description = "This is descripton"
                     });
+
+                //setupAction.ResolveConflictingActions(apiDescription => apiDescription.First());
+                setupAction.OperationFilter<GetBookOperationFilter>();
+                setupAction.OperationFilter<CreateBookOperationFilter>();
 
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
