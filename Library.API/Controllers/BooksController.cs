@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 namespace Library.API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/authors/{authorId}/books")]
+    //[Route("api/authors/{authorId}/books")]
+    [Route("api/v{version:apiVersion}/authors/{authorId}/books")]
     [ApiController]
     public class BooksController : ControllerBase
     { 

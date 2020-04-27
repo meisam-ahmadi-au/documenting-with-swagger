@@ -11,6 +11,12 @@
             <param name="authorId">The id of the author you want to get</param>
             <returns>An ActionResult of type  author.</returns>
         </member>
+        <member name="M:Library.API.Controllers.AuthorsontrollerV2.GetAuthors">
+            <summary>
+            Authors Controller V2
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Library.API.Controllers.BooksController.GetBook(System.Guid,System.Guid)">
             <summary>
             Get book by authorId and bookId

@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 namespace Library.API.Controllers
 {
 
-    [Route("api/authors")]
+    // [Route("api/authors")]
+    [Route("api/v{version:apiVersion}/authors")]
+    [Produces("application/json")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
@@ -30,6 +32,7 @@ namespace Library.API.Controllers
             _mapper = mapper;
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
@@ -84,6 +87,10 @@ namespace Library.API.Controllers
         }
 
         [HttpPatch("{authorId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status422UnprocessableEntity)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<Author>> UpdateAuthor(
             Guid authorId,
             JsonPatchDocument<AuthorForUpdate> patchDocument)
